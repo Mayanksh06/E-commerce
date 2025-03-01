@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop - Clothing Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Color Palette */
+:root {
+    --primary-color: #4A90E2;
+    --secondary-color: #50E3C2;
+    --text-color: #333;
+    --background-color: #F4F7FA;
+    --white: #fff;
+    --dark-gray: #555;
+    --nav-bg: #1F2937;
+    --nav-hover: #4A90E2;
+}
+
+/* General Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+h1, h2, h3, p {
+    margin: 0 0 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+/* Header */
+header {
+    background-color: var(--nav-bg);
+    padding: 1rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+header .logo img {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--primary-color);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    padding: 0;
+    margin: 0;
+}
+
+nav ul li a {
+    color: var(--white);
+    font-weight: 400;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+nav ul li a:hover {
+    background-color: var(--nav-hover);
+}
+
+/* Product Grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+}
+
+.product {
+    background: var(--white);
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.product:hover {
+    transform: translateY(-10px);
+}
+
+.product img {
+    width: 100%;
+    height: 300px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.product h3 {
+    font-size: 1.5rem;
+    color: var(--text-color);
+}
+
+.product p {
+    font-size: 1.2rem;
+    color: var(--dark-gray);
+}
+
+.add-to-cart {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Cart Page */
+.cart {
+    background: var(--white);
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.cart h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: var(--background-color);
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.cart-item p {
+    margin: 0;
+    font-size: 1.1rem;
+}
+
+.cart-item button {
+    background-color: var(--nav-bg);
+    color: var(--white);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease;
+}
+
+.cart-item button:hover {
+    background-color: var(--primary-color);
+}
+
+#cart-total {
+    font-size: 1.5rem;
+    text-align: right;
+    margin-top: 1rem;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Popup Styling */
+#popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--white);
+    color: var(--text-color);
+    padding: 1.5rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    z-index: 1001;
+    font-size: 1.2rem;
+    font-weight: 600;
+    opacity: 0;
+    animation: fade-in 0.5s ease forwards;
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+@keyframes fade-out {
+    from {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+    to {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+}
+
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="./img/Urban_Vogue.webp" alt="Urban Vogue Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Contact</a></li>
+                <li><a href="cart.html">Cart</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Product List -->
+    <section class="product-grid">
+        <div class="product" data-name="Product 1" data-price="25">
+            <img src="./img/1.jpeg" alt="Product 1">
+            <h3>Product 1</h3>
+            <p>$25.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 2" data-price="30">
+            <img src="./img/2.jpeg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>$30.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 2" data-price="30">
+            <img src="./img/3.jpeg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>$30.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+        <div class="product" data-name="Product 2" data-price="30">
+            <img src="./img/4.jpeg" alt="Product 2">
+            <h3>Product 2</h3>
+            <p>$30.00</p>
+            <button class="add-to-cart">Add to Cart</button>
+        </div>
+    </section>
+
+    <!-- JS -->
+    <script>
+        // document.querySelectorAll('.add-to-cart').forEach(button => {
+        //     button.addEventListener('click', () => {
+        //         const product = button.parentElement;
+        //         const name = product.dataset.name;
+        //         const price = product.dataset.price;
+
+        //         let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        //         cart.push({ name, price });
+        //         localStorage.setItem('cart', JSON.stringify(cart));
+
+        //         // Show popup
+        //         alert(`${name} has been added to your cart!`);
+        //     });
+        // });
+
+        // Create popup element
+const popup = document.createElement('div');
+popup.id = 'popup';
+document.body.appendChild(popup);
+
+// Function to show popup
+function showPopup(message) {
+    popup.textContent = message;
+    popup.style.display = 'block';
+
+    // Fade in
+    popup.style.animation = 'fade-in 0.5s ease forwards';
+
+    // Auto-hide after 2 seconds
+    setTimeout(() => {
+        popup.style.animation = 'fade-out 0.5s ease forwards';
+        setTimeout(() => {
+            popup.style.display = 'none';
+        }, 500); // Wait for fade-out to finish
+    }, 2000);
+}
+
+// Add to cart functionality
+document.querySelectorAll('.add-to-cart').forEach(button => {
+    button.addEventListener('click', () => {
+        const product = button.parentElement;
+        const name = product.dataset.name;
+        const price = product.dataset.price;
+
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+        cart.push({ name, price });
+        localStorage.setItem('cart', JSON.stringify(cart));
+
+        // Show popup
+        showPopup(`${name} has been added to your cart!`);
+    });
+});
+
+    </script>
+</body>
+</html>

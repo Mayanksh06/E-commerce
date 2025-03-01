@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Partner Brands - Clothing Store</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+        /* Color Palette */
+        :root {
+            --primary-color: #4A90E2;
+            --secondary-color: #50E3C2;
+            --text-color: #333;
+            --background-color: #F4F7FA;
+            --white: #fff;
+            --dark-gray: #555;
+            --nav-bg: #1F2937;
+            --nav-hover: #4A90E2;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        h2, h3, p {
+            margin: 0 0 10px;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--nav-bg);
+            padding: 0.5rem 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header .logo img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 1rem;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 400;
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background-color: var(--nav-hover);
+            color: var(--white);
+        }
+
+        /* Brands Section */
+        .brands-section {
+            padding: 3rem 0;
+            background: var(--white);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .brands-section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .brand-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .brand-card {
+            background: var(--background-color);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .brand-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .brand-card img {
+            width: 100px;
+            height: 100px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .brand-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .brand-card p {
+            font-size: 1rem;
+            color: var(--dark-gray);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem 0;
+            margin-top: 3rem;
+            border-radius: 10px 10px 0 0;
+        }
+
+        footer p {
+            font-size: 1rem;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">
+            <a href="index.html">
+                <img src="./img/Urban_Vogue.webp" alt="Urban Vogue Logo">
+            </a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Brands Section -->
+    <section class="brands-section">
+        <div class="container">
+            <h2>Brands We Work With</h2>
+            <div class="brand-grid">
+                <div class="brand-card">
+                    <img src="./img/brands/Nike.jpeg" alt="Nike Logo">
+                    <h3>Nike</h3>
+                    <p>Innovative sportswear and fashion.</p>
+                </div>
+                <div class="brand-card">
+                    <img src="./img/brands/Adidas.jpeg" alt="Adidas Logo">
+                    <h3>Adidas</h3>
+                    <p>Comfortable and stylish activewear.</p>
+                </div>
+                <div class="brand-card">
+                    <img src="./img/brands/PUMA.jpeg" alt="Puma Logo">
+                    <h3>Puma</h3>
+                    <p>Modern design meets functionality.</p>
+                </div>
+                <div class="brand-card">
+                    <img src="./img/brands/Zara.jpeg" alt="Zara Logo">
+                    <h3>Zara</h3>
+                    <p>Trendy and timeless fashion.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Clothing Store. All Rights Reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
